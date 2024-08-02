@@ -1,4 +1,5 @@
 from django.shortcuts import render
-from .views import *
+from .models import Services
 def home(request):
-    return render(request, 'root/index.html')
+    services = Services.objects.filter(status = True)
+    return render(request, 'root/index.html', context={"services": services})
