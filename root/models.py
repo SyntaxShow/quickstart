@@ -49,7 +49,7 @@ class Pricings(models.Model):
     name = models.CharField(max_length=120)
     content = models.TextField(default="description pricing")
     fee = models.FloatField(default=3)
-    attribute = models.ManyToManyField(Attributes)
+    attributes = models.ManyToManyField(Attributes)
     status = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -70,7 +70,7 @@ class Questions(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.name
+        return self.question
     
     class Meta:
         ordering = ("created_at",)
@@ -98,7 +98,7 @@ class Trainer(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.name
+        return self.user.username
     
     class Meta:
         ordering = ("created_at",)
